@@ -143,6 +143,7 @@ export default function LandingPage() {
               <Link
                 key={d.name}
                 to="/check"
+                 state={{ district: d.name }}
                 className="group relative overflow-hidden rounded-2xl shadow-2xl border border-white/10 hover:border-green-400 transition-all duration-300 hover:scale-[1.02]"
               >
                 <div

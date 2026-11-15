@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import YearSelector from '../components/YearSelector';
 import SalinityResultCard from '../components/SalinityResultCard';
@@ -26,6 +27,8 @@ const DISTRICT_IMAGES: Record<string, string> = {
 };
 
 export default function CheckPage() {
+    const location = useLocation();
+  const requestedDistrict = (location.state as { district?: string } | null)?.district;
   const [step, setStep] = useState<Step>('district');
 
   // District
@@ -55,12 +58,32 @@ export default function CheckPage() {
   const [error, setError] = useState<string | null>(null);
 
   // Load available districts on mount
+    // Load districts and automatically select the district passed from the home page
   useEffect(() => {
     getDistricts()
-      .then((res) => setDistricts(res.districts))
+      .then((res) => {
+        setDistricts(res.districts);
+
+        if (requestedDistrict) {
+          const district = res.districts.find(
+            (d) => d.name === requestedDistrict
+          );
+
+          if (district) {
+            setSelectedDistrict(district);
+            setLatitude(district.placeholder.lat);
+            setLongitude(district.placeholder.lon);
+            setStep('location');
+
+            getOverallEcTrend(district.name)
+              .then((trend) => setOverallTrend(trend.data))
+              .catch(() => setOverallTrend(null));
+          }
+        }
+      })
       .catch(() => setDistricts([]))
       .finally(() => setDistrictLoading(false));
-  }, []);
+  }, [requestedDistrict]);
 
   // When district changes: reset everything, load overall trend
   const handleSelectDistrict = (d: DistrictInfo) => {
