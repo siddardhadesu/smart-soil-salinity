@@ -12,13 +12,13 @@ const startServer = async () => {
     process.exit(1);
   }
 
-  app.listen(PORT, () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`\n🌱 Smart Soil Salinity API — http://localhost:${PORT}`);
     console.log(`   Health:    GET /api/health`);
     console.log(`   Districts: GET /api/districts`);
-    console.log(`   Salinity:  GET /api/soil-salinity?latitude=15.8625&longitude=80.4965&year=2025&district=Bapatla`);
-    console.log(`   Nearby:    GET /api/nearby-locations?latitude=15.8625&longitude=80.4965&year=2025&district=Bapatla`);
-    console.log(`   Trend:     GET /api/overall-ec-trend?district=Godavari\n`);
+    console.log(`   Salinity:  GET /api/soil-salinity?latitude=15.8625&longitude=80.4965&year=2025&district=Nellore`);
+    console.log(`   Nearby:    GET /api/nearby-locations?latitude=15.8625&longitude=80.4965&year=2025&district=Nellore`);
+    console.log(`   Trend:     GET /api/overall-ec-trend?district=Ongole\n`);
   });
 };
 

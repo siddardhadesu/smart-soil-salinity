@@ -26,7 +26,7 @@ export default function Navbar() {
           <span className="text-2xl">🌱</span>
           <div>
             <div className="font-bold text-base leading-tight">Smart Soil Salinity</div>
-            <div className="text-xs text-green-400 leading-tight">Andhra Pradesh — Bapatla · Godavari</div>
+            <div className="text-xs text-green-400 leading-tight">Andhra Pradesh — Nellore · Ongole</div>
           </div>
         </Link>
 

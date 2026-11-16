@@ -5,8 +5,8 @@ interface Props {
   predictedYears?: number[];
 }
 
-const DEFAULT_HISTORICAL = [2019,2020,2021,2022,2023,2024,2025];
-const DEFAULT_PREDICTED  = [2026,2027,2028,2029,2030];
+const DEFAULT_HISTORICAL = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+const DEFAULT_PREDICTED  = [2026,2027,2028,2029,2030,2031,2032,2033,2034,2035];
 
 export default function YearSelector({
   year, onYearChange,

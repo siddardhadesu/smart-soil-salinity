@@ -18,11 +18,11 @@ export default function Footer() {
             <ul className="space-y-1.5 text-sm">
               <li className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0" />
-                <span>Bapatla — 2015–2030 (Predicted: 2026–2030)</span>
+                <span>Nellore — 2015–2035 (Predicted: 2026–2035)</span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-400 flex-shrink-0" />
-                <span>Godavari — 2010–2035 (Predicted: 2026–2035)</span>
+                <span>Ongole — 2015–2035 (Predicted: 2026–2035)</span>
               </li>
             </ul>
           </div>

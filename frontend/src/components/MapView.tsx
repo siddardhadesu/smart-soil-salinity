@@ -52,11 +52,11 @@ function MapRecenter({ lat, lon }: { lat: number; lon: number }) {
   return null;
 }
 
-const DEFAULT_CENTER: [number, number] = [15.850054, 80.450063];
+const DEFAULT_CENTER: [number, number] = [14.28093762118564, 79.69300652241913];
 
 export default function MapView({
   userLat, userLon, matchedLat, matchedLon,
-  ecValue, year, district = 'Bapatla',
+  ecValue, year, district = 'Nellore',
   districtCenter, nearbyLocations = [],
 }: MapViewProps) {
   const studyCenter: [number, number] = districtCenter ?? DEFAULT_CENTER;
@@ -64,9 +64,9 @@ export default function MapView({
     ? [userLat, userLon]
     : studyCenter;
 
-  // Study area radius: approximate from bounds
-  // Bapatla ~5.5km radius, Godavari larger ~60km — use a reasonable circle per district
-  const studyRadius = district === 'Godavari' ? 60000 : 8000;
+  // Approximate radius covering the imported dataset extent for either district.
+  // This circle is a visual guide, not an official district boundary.
+  const studyRadius = 65000;
 
   return (
     <div className="bg-white rounded-2xl shadow-md border border-gray-200 overflow-hidden">

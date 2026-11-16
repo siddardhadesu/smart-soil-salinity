@@ -5,13 +5,13 @@ const FEATURES = [
     icon: '📍',
     title: 'Location-Based Assessment',
     description:
-      'Enter your farm coordinates and instantly find the nearest soil EC data from datasets covering Bapatla and Godavari districts.',
+      'Enter your farm coordinates and instantly find the nearest soil EC data from datasets covering Nellore and Ongole districts.',
   },
   {
     icon: '📅',
     title: 'Historical & Predicted Data',
     description:
-      'Bapatla: 2019–2030. Godavari: 2010–2035. Historical observations and machine learning predictions clearly separated.',
+      'Both Nellore and Ongole: 2015–2035. Historical data (2015–2025) and predicted data (2026–2035). Historical observations and machine learning predictions clearly separated.',
   },
   {
     icon: '🗺️',
@@ -29,7 +29,7 @@ const FEATURES = [
     icon: '🌾',
     title: 'Multi-District Support',
     description:
-      'Currently covers Bapatla (2015–2030) and Godavari (2010–2035). More districts can be added as datasets become available.',
+      'Currently covers Nellore and Ongole (2015–2035). More districts can be added as datasets become available.',
   },
   {
     icon: '🔬',
@@ -40,7 +40,7 @@ const FEATURES = [
 ];
 
 const STEPS = [
-  { step: '1', title: 'Select District', desc: 'Bapatla or Godavari' },
+  { step: '1', title: 'Select District', desc: 'Nellore or Ongole' },
   { step: '2', title: 'Enter Location', desc: 'Type or detect your farm coordinates' },
   { step: '3', title: 'Select Year', desc: 'Historical or predicted year' },
   { step: '4', title: 'Get Result', desc: 'EC value, map, nearby areas, trend' },
@@ -48,16 +48,16 @@ const STEPS = [
 
 const DISTRICTS = [
   {
-    name: 'Bapatla',
+    name: 'Nellore',
     emoji: '🌊',
-    years: '2015–2030',
-    predicted: '2026–2030',
+    years: '2015–2035',
+    predicted: '2026–2035',
     img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
   },
   {
-    name: 'Godavari',
+    name: 'Ongole',
     emoji: '🏞️',
-    years: '2010–2035',
+    years: '2015–2035',
     predicted: '2026–2035',
     img: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&q=80',
   },
@@ -110,8 +110,8 @@ export default function LandingPage() {
           <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {[
               { value: '2 Districts', label: 'Covered' },
-              { value: '100K+', label: 'Dataset Points' },
-              { value: '2010–2035', label: 'Year Range' },
+              { value: '600', label: 'Dataset Points' },
+              { value: '2015–2035', label: 'Year Range' },
               { value: 'ML Model', label: 'Future Predictions' },
             ].map((stat) => (
               <div

@@ -1,14 +1,11 @@
+
 /**
  * Safe year-to-column whitelist mapping.
- * Covers both Bapatla (2015–2030) and Godavari (2010–2035).
+ * Covers both Nellore and Ongole (2015–2035).
  * Prevents SQL injection — year param is never concatenated directly into SQL.
  */
+
 export const YEAR_COLUMN_MAP: Record<number, string> = {
-  2010: 'ec_2010',
-  2011: 'ec_2011',
-  2012: 'ec_2012',
-  2013: 'ec_2013',
-  2014: 'ec_2014',
   2015: 'ec_2015',
   2016: 'ec_2016',
   2017: 'ec_2017',
@@ -32,45 +29,96 @@ export const YEAR_COLUMN_MAP: Record<number, string> = {
   2035: 'ec_2035',
 };
 
-// Per-district config: selectable years, historical cutoff, predicted range
+const YEARS_2015_2035 = Array.from(
+  { length: 21 },
+  (_, i) => 2015 + i
+);
+
+const HISTORICAL_YEARS = Array.from(
+  { length: 11 },
+  (_, i) => 2015 + i
+);
+
+const PREDICTED_YEARS = Array.from(
+  { length: 10 },
+  (_, i) => 2026 + i
+);
+
+// Per-location configuration
 export const DISTRICT_CONFIG: Record<string, {
   selectableYears: number[];
   historicalYears: number[];
   predictedYears: number[];
   trendYears: number[];
-  bounds: { minLat: number; maxLat: number; minLon: number; maxLon: number };
+  bounds: {
+    minLat: number;
+    maxLat: number;
+    minLon: number;
+    maxLon: number;
+  };
   center: [number, number];
   placeholder: { lat: string; lon: string };
 }> = {
-  Bapatla: {
-    selectableYears: [2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030],
-    historicalYears: [2019,2020,2021,2022,2023,2024,2025],
-    predictedYears:  [2026,2027,2028,2029,2030],
-    trendYears:      [2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030],
-    bounds: { minLat: 15.800063, maxLat: 15.900046, minLon: 80.400071, maxLon: 80.500054 },
-    center: [15.850054, 80.450063],
-    placeholder: { lat: '15.8625', lon: '80.4965' },
+  Nellore: {
+    selectableYears: YEARS_2015_2035,
+    historicalYears: HISTORICAL_YEARS,
+    predictedYears: PREDICTED_YEARS,
+    trendYears: YEARS_2015_2035,
+
+    bounds: {
+      minLat: 13.49304733205003,
+      maxLat: 15.06882791032125,
+      minLon: 79.15320715078965,
+      maxLon: 80.2328058940486,
+    },
+
+    center: [14.28093762118564, 79.69300652241913],
+
+    placeholder: {
+      lat: '14.28094',
+      lon: '79.69301',
+    },
   },
-  Godavari: {
-    selectableYears: [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035],
-    historicalYears: [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
-    predictedYears:  [2026,2027,2028,2029,2030,2031,2032,2033,2034,2035],
-    trendYears:      [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035],
-    // Real bounds from actual imported data
-    bounds: { minLat: 16.317897, maxLat: 17.997747, minLon: 80.879817, maxLon: 82.586616 },
-    center: [17.157822, 81.733217] as [number, number],
-    placeholder: { lat: '17.1978', lon: '82.2273' },
+
+  Ongole: {
+    selectableYears: YEARS_2015_2035,
+    historicalYears: HISTORICAL_YEARS,
+    predictedYears: PREDICTED_YEARS,
+    trendYears: YEARS_2015_2035,
+
+    bounds: {
+      minLat: 14.977627439165524,
+      maxLat: 16.255154813336308,
+      minLon: 78.75070515966172,
+      maxLon: 80.4281066413467,
+    },
+
+    center: [15.616391126250916, 79.5894059005042],
+
+    placeholder: {
+      lat: '15.61639',
+      lon: '79.58941',
+    },
   },
 };
 
-export const getDataType = (year: number, district: string): 'Historical' | 'Predicted' => {
+export const getDataType = (
+  year: number,
+  district: string
+): 'Historical' | 'Predicted' => {
   const config = DISTRICT_CONFIG[district];
-  if (!config) return year <= 2025 ? 'Historical' : 'Predicted';
-  return config.historicalYears.includes(year) ? 'Historical' : 'Predicted';
+
+  if (!config) {
+    return year <= 2025 ? 'Historical' : 'Predicted';
+  }
+
+  return config.historicalYears.includes(year)
+    ? 'Historical'
+    : 'Predicted';
 };
 
 export const isValidYear = (year: number): boolean => {
-  return Object.keys(YEAR_COLUMN_MAP).includes(String(year));
+  return Object.prototype.hasOwnProperty.call(YEAR_COLUMN_MAP, year);
 };
 
 export const getColumnForYear = (year: number): string | null => {
@@ -78,5 +126,5 @@ export const getColumnForYear = (year: number): string | null => {
 };
 
 export const getDistrictYears = (district: string) => {
-  return DISTRICT_CONFIG[district] ?? DISTRICT_CONFIG['Bapatla'];
+  return DISTRICT_CONFIG[district] ?? DISTRICT_CONFIG['Nellore'];
 };

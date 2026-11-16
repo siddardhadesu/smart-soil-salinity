@@ -9,7 +9,8 @@
     "start": "node dist/src/server.js",
     "setup-db": "ts-node scripts/setupDb.ts",
     "import-csv": "ts-node scripts/importCsv.ts",
-    "import-godavari": "ts-node scripts/importGodavariCsv.ts"
+    "import-godavari": "ts-node scripts/importGodavariCsv.ts",
+    "import-locations": "ts-node scripts/importLocations.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",

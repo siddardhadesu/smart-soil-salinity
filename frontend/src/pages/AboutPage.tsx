@@ -26,7 +26,7 @@ export default function AboutPage() {
           <p className="text-gray-700 text-sm leading-relaxed">
             This academic research project applies remote sensing data and machine learning to predict
             and map soil electrical conductivity (EC) — a key indicator of soil salinity — across
-            Bapatla and Godavari districts in Andhra Pradesh. The application gives farmers and
+            Nellore and Ongole districts in Andhra Pradesh. The application gives farmers and
             agricultural researchers an accessible tool to assess historical and predicted salinity at
             specific farm locations.
           </p>
@@ -36,27 +36,27 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
             {
-              name: 'Bapatla',
+              name: 'Nellore',
               emoji: '🌊',
               color: 'border-blue-200 bg-blue-50',
               headerColor: 'text-blue-800',
               items: [
-                { label: 'Coverage', value: 'Lat 15.80–15.90 | Lon 80.40–80.50' },
-                { label: 'Historical', value: '2019–2025' },
-                { label: 'Predicted', value: '2026–2030' },
-                { label: 'Full range', value: '2015–2030' },
+                { label: 'Coverage', value: 'Lat 13.49–15.07 | Lon 79.15–80.23' },
+                { label: 'Historical', value: '2015–2025' },
+                { label: 'Predicted', value: '2026–2035' },
+                { label: 'Full range', value: '2015–2035' },
               ],
             },
             {
-              name: 'Godavari',
+              name: 'Ongole',
               emoji: '🏞️',
               color: 'border-green-200 bg-green-50',
               headerColor: 'text-green-800',
               items: [
-                { label: 'Coverage', value: 'Lat 16.32–17.99 | Lon 80.88–82.59' },
-                { label: 'Historical', value: '2010–2025' },
+                { label: 'Coverage', value: 'Lat 14.98–16.26 | Lon 78.75–80.43' },
+                { label: 'Historical', value: '2015–2025' },
                 { label: 'Predicted', value: '2026–2035' },
-                { label: 'Full range', value: '2010–2035' },
+                { label: 'Full range', value: '2015–2035' },
               ],
             },
           ].map((d) => (
@@ -110,7 +110,7 @@ export default function AboutPage() {
               { area: 'Maps', tech: 'Leaflet + React-Leaflet' },
               { area: 'Charts', tech: 'Recharts (trend + district-wide overview)' },
               { area: 'Backend', tech: 'Node.js + Express + TypeScript' },
-              { area: 'Database', tech: 'PostgreSQL 16 + PostGIS 3' },
+              { area: 'Database', tech: 'PostgreSQL 18 + PostGIS 3' },
               { area: 'Spatial Query', tech: 'PostGIS KNN nearest-neighbor' },
             ].map((item) => (
               <div key={item.area} className="flex items-start gap-2">
@@ -133,7 +133,7 @@ export default function AboutPage() {
 React Frontend  (port 5173)
   │  REST API / Axios
   ▼
-Express Backend  (port 5000)
+Express Backend  (port 5001)
   │  district-aware queries
   ▼
 PostgreSQL + PostGIS

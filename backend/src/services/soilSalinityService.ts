@@ -194,33 +194,29 @@ export const getOverallEcTrend = async (district: string): Promise<OverallEcTren
   return yearStats;
 };
 
+
 export const getDistricts = async (): Promise<DistrictInfo[]> => {
-  return [
-    {
-      name: 'Bapatla',
+  return ['Nellore', 'Ongole'].map((name) => {
+    const config = DISTRICT_CONFIG[name];
+
+    return {
+      name,
       state: 'Andhra Pradesh',
       country: 'India',
       available: true,
-      yearRange: { start: 2019, end: 2030 },
-      historicalYears: DISTRICT_CONFIG.Bapatla.historicalYears,
-      predictedYears: DISTRICT_CONFIG.Bapatla.predictedYears,
-      bounds: DISTRICT_CONFIG.Bapatla.bounds,
-      center: DISTRICT_CONFIG.Bapatla.center,
-      placeholder: DISTRICT_CONFIG.Bapatla.placeholder,
-    },
-    {
-      name: 'Godavari',
-      state: 'Andhra Pradesh',
-      country: 'India',
-      available: true,
-      yearRange: { start: 2010, end: 2035 },
-      historicalYears: DISTRICT_CONFIG.Godavari.historicalYears,
-      predictedYears: DISTRICT_CONFIG.Godavari.predictedYears,
-      bounds: { minLat: 16.317897, maxLat: 17.997747, minLon: 80.879817, maxLon: 82.586616 },
-      center: [17.157822, 81.733217] as [number, number],
-      placeholder: DISTRICT_CONFIG.Godavari.placeholder,
-    },
-  ];
+
+      yearRange: {
+        start: config.selectableYears[0],
+        end: config.selectableYears[config.selectableYears.length - 1],
+      },
+
+      historicalYears: config.historicalYears,
+      predictedYears: config.predictedYears,
+      bounds: config.bounds,
+      center: config.center,
+      placeholder: config.placeholder,
+    };
+  });
 };
 
 export const getDatabaseHealth = async () => {

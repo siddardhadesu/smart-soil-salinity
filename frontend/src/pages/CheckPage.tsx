@@ -18,9 +18,9 @@ type Step = 'district' | 'location' | 'year' | 'result';
 
 // Agriculture background images (free Unsplash)
 const DISTRICT_IMAGES: Record<string, string> = {
-  Bapatla:
+  Nellore:
     'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80',
-  Godavari:
+  Ongole:
     'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1200&q=80',
   default:
     'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&q=80',
@@ -227,7 +227,7 @@ export default function CheckPage() {
 
                   <div className="relative z-10 p-8 text-left">
                     <div className="text-4xl mb-3">
-                      {d.name === 'Bapatla' ? '🌊' : '🏞️'}
+                      {d.name === 'Nellore' ? '🌊' : '🏞️'}
                     </div>
                     <h2 className="text-2xl font-bold text-white">{d.name}</h2>
                     <p className="text-green-300 text-sm mt-1">{d.state}</p>
@@ -282,7 +282,7 @@ export default function CheckPage() {
           <div>
             <div className="text-green-300 text-sm font-medium">Andhra Pradesh</div>
             <h1 className="text-2xl font-bold text-white">
-              {selectedDistrict?.name === 'Bapatla' ? '🌊' : '🏞️'} {selectedDistrict?.name} District
+              {selectedDistrict?.name === 'Nellore' ? '🌊' : '🏞️'} {selectedDistrict?.name} District
             </h1>
             <div className="text-green-200 text-xs mt-0.5">
               {selectedDistrict?.yearRange.start}–{selectedDistrict?.yearRange.end} |{' '}

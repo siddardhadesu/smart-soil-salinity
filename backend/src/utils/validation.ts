@@ -5,7 +5,7 @@ export interface ValidationResult {
   message?: string;
 }
 
-export const SUPPORTED_DISTRICTS = ['Bapatla', 'Godavari'];
+export const SUPPORTED_DISTRICTS = ['Nellore', 'Ongole'];
 
 export const validateLatitude = (lat: number): ValidationResult => {
   if (isNaN(lat)) return { valid: false, message: 'Latitude must be a valid number.' };
@@ -27,7 +27,7 @@ export const isWithinDatasetBounds = (lat: number, lon: number, district: string
 };
 
 export const getDatasetBounds = (district: string) => {
-  return DISTRICT_CONFIG[district]?.bounds ?? DISTRICT_CONFIG['Bapatla'].bounds;
+  return DISTRICT_CONFIG[district]?.bounds ?? DISTRICT_CONFIG['Nellore'].bounds;
 };
 
 export const validateDistrict = (district: string): ValidationResult => {
